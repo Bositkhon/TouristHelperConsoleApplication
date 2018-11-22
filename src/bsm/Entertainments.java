@@ -1,16 +1,16 @@
 package bsm;
 
-public class Entertainments {
+public class Entertainments extends HStructure {
 
-    public static final int MUSEUMS_QUANTITY = 9;
+    final int MUSEUMS_QUANTITY = 9;
 
-    public static final int RELIGIOUS_SIGHTS_QUANTITY = 6;
+    final int RELIGIOUS_SIGHTS_QUANTITY = 6;
 
-    public static final int PARKS_QUANTITY  = 5;
+    final int PARKS_QUANTITY  = 5;
 
-    public static final int TOTAL_SIGHT_QUANTITY = MUSEUMS_QUANTITY + PARKS_QUANTITY + RELIGIOUS_SIGHTS_QUANTITY;
+    final int TOTAL_SIGHT_QUANTITY = MUSEUMS_QUANTITY + PARKS_QUANTITY + RELIGIOUS_SIGHTS_QUANTITY;
 
-    public static String[] entertainmentNames = {
+    String[] names = {
             "Uzbekistan State Museum of Applied Art",
             "Amir Timur Museum",
             "Railway Museum",
@@ -36,14 +36,14 @@ public class Entertainments {
 
     };
 
-    public static double[] entertainmentPrices = {
+    double[] prices = {
             15, 9, 10, 18, 15, 10, 0, 0.2, 8, // Museums, Theatres and sights
             0,0,0,0,0,0, // Spiritual and religious sights
             0,0,0,5,10 // Parks
 
     };
 
-    public static String[] entertainmentAddresses = {
+    String[] addresses = {
             "Rakatboshi St. 15, Tashkent 100031, Uzbekistan",
             "Amir Timur St. 1, Yunus-Abad district, Tashkent 100431, Uzbekistan",
             "Turkiston St. 6, Tashkent 100060, Uzbekistan",
@@ -68,15 +68,23 @@ public class Entertainments {
             "Yashnabad district, Tashkent, Uzbekistan",
     };
 
-    public static String getEntertainmentName(int entertainmentID) {
-        return entertainmentNames[entertainmentID];
+    @Override
+    public int quantity() {
+        return this.names.length;
     }
 
-    public static String getEntertainmentAddress(int entertainmentID) {
-        return entertainmentAddresses[entertainmentID];
+    @Override
+    String getAddress(int placeID) {
+        return this.addresses[placeID];
     }
 
-    public static double getEntertainmentPrice(int entertainmentID) {
-        return entertainmentPrices[entertainmentID];
+    @Override
+    double getPrice(int placeID) {
+        return this.prices[placeID];
+    }
+
+    @Override
+    String getName(int placeID) {
+        return names[placeID];
     }
 }
